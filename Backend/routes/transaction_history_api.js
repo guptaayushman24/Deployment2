@@ -26,4 +26,18 @@ router.get('/transaction/email',async(req,res)=>{
         res.status(500).json({message:'Error fetching transactions',err});
     }
 })
+
+router.delete('/deleteemail',async(req,res)=>{
+    const {email} = req.query;
+    console.log("Email in the server side",req.query);
+    console.log("Request query is",email);
+    try{
+        const deletetransaction = await transactionhistoryschema.deleteMany({SenderEmail:{email}});
+        console.log(deletetransaction);
+        res.status(200).json(deletetransaction);
+    }
+    catch(err){
+        res.status(500).json({message:'Error in deleting the transaction',err});
+    }
+})
 module.exports = router;

@@ -35,11 +35,24 @@ const TransactionHistory = () => {
 
         console.log(error);
     }
+    // Delete API
   };
+
+  const cleartransaction = async()=>{
+    try{
+      const transactiondelete = await axios.delete('http://10.0.2.2:5000/transaction/deleteemail',{
+        parmas:email
+      })
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
   useFocusEffect(
     React.useCallback(() => {
       console.log('Transaction History is focused');
       fetchTransactions();
+      cleartransaction();
 
       return () => {
         console.log('Transaction History is unfocused');
@@ -48,25 +61,6 @@ const TransactionHistory = () => {
   );
 
     return (
-        // <SafeAreaView style={styles.container}>
-        //     <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        //         <View style={styles.header}>
-        //             <Text style={styles.headerText}>Amount Sent By The User</Text>
-
-        //         </View>
-        //         <View style={styles.row}>
-        //             <Text style={styles.columnHeader}>Reciever Email</Text>
-        //             <Text style={styles.columnHeader}>Amount Send</Text>
-        //         </View>
-        //         {/* Add more rows as needed */}
-        //         <View style={styles.row}>
-
-        //             <Text style={styles.column}>example@example.com</Text>
-        //             <Text style={styles.column}>Rs 100.00</Text>
-        //         </View>
-        //         {/* Add more rows as needed */}
-        //     </ScrollView>
-        // </SafeAreaView>
         <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.header}>

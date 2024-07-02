@@ -345,7 +345,7 @@ const HomePage = () => {
   useEffect(()=>{
     walletdatasender();
 
-  },[senderindex,senderamount]);
+  },[senderamount]);
 
   // Transaction
   const transaction = async()=>{
@@ -372,6 +372,10 @@ const HomePage = () => {
 
     setmodalVisibleTransfer(!modalVisibleTransfer);
   };
+
+  const clearhistory = ()=>{
+    console.log("Clear History button is pressed")
+  }
 
   return (
     <View style={styles.main}>
@@ -466,8 +470,8 @@ const HomePage = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.withdraw}>
-            <TouchableOpacity>
-              <Text style={{ textAlign: "center", marginTop: 10, fontSize: 18 }}>Withdraw</Text>
+            <TouchableOpacity onPress={clearhistory}>
+              <Text style={{ textAlign: "center", marginTop: 10, fontSize: 18 }}>Delete History</Text>
             </TouchableOpacity>
           </View>
         </View>
