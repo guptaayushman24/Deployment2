@@ -6,13 +6,13 @@ const AppContext = createContext();
 // Define the provider component
 const AppProvider = ({ children }) => {
   const [email, setemail] = useState('');
-
   return (
     <AppContext.Provider value={{ email, setemail }}>
+      
       {children}
     </AppContext.Provider>
   );
 };
 
 
-export { AppContext, AppProvider };
+export { AppContext, AppProvider};

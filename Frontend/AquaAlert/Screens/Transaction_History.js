@@ -13,6 +13,7 @@ const TransactionHistory = () => {
     console.log("Email is",email);
     try {
       const response = await axios.get('http://10.0.2.2:5000/transaction/transaction/email', {
+      
         params: {email}
       });
 
@@ -37,22 +38,11 @@ const TransactionHistory = () => {
     }
     // Delete API
   };
-
-  const cleartransaction = async()=>{
-    try{
-      const transactiondelete = await axios.delete('http://10.0.2.2:5000/transaction/deleteemail',{
-        parmas:email
-      })
-    }
-    catch(err){
-      console.log(err);
-    }
-  }
   useFocusEffect(
     React.useCallback(() => {
       console.log('Transaction History is focused');
       fetchTransactions();
-      cleartransaction();
+      // cleartransaction();
 
       return () => {
         console.log('Transaction History is unfocused');

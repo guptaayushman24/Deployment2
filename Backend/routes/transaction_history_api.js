@@ -32,7 +32,7 @@ router.delete('/deleteemail',async(req,res)=>{
     console.log("Email in the server side",req.query);
     console.log("Request query is",email);
     try{
-        const deletetransaction = await transactionhistoryschema.deleteMany({SenderEmail:{email}});
+        const deletetransaction = await transactionhistoryschema.deleteMany({SenderEmail:email});
         console.log(deletetransaction);
         res.status(200).json(deletetransaction);
     }

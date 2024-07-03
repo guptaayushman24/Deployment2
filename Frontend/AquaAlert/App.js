@@ -36,13 +36,6 @@ export default function App() {
     </NavigationContainer>
     </AppProvider>
 
-    // <HomePage></HomePage>
-    // <Signup></Signup>
-    // <Signin></Signin>
-    // <BankDetail></BankDetail>
-    // <AddMoney></AddMoney>
-    // <Walletsign></Walletsign>
-
 
 )};
 

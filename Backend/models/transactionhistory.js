@@ -12,7 +12,7 @@ const transactionmodel = new mongoose.Schema({
         type:Number,
         require:true,
     }
-},{require:true});
+},{require:true},{ typeKey: '$type' });
 const transaction = mongoose.model('transaction',transactionmodel);
 
 module.exports = transaction;
