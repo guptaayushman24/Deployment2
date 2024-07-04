@@ -6,8 +6,9 @@ const AppContext = createContext();
 // Define the provider component
 const AppProvider = ({ children }) => {
   const [email, setemail] = useState('');
+  const [email1, setemail1] = useState('');
   return (
-    <AppContext.Provider value={{ email, setemail }}>
+    <AppContext.Provider value={{ email, setemail ,email1,setemail1}}>
       
       {children}
     </AppContext.Provider>

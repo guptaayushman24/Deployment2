@@ -132,4 +132,15 @@ router.get('/bankname',async(req,res)=>{
       console.log(err);
    }
 })
+router.get('/accountnumber',async(req,res)=>{
+   try{
+      const response = await bankdetailschema.find({},{accountnumber:1,_id:0});
+      res.status(200).json(response);
+      console.log(response);
+   }
+
+   catch(err){
+      console.log(err);
+   }
+})
 module.exports = router;

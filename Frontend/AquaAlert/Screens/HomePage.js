@@ -1,14 +1,10 @@
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, Modal, Pressable, TextInput, Alert } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, Modal, Pressable, TextInput, Alert} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { useRoute } from '@react-navigation/native';
-import { useDeferredValue, useEffect, useState,useContext } from 'react';
+import { useRoute,useFocusEffect } from '@react-navigation/native';
+import React,{ useDeferredValue, useEffect, useState,useContext } from 'react';
 import { useIsFocused } from '@react-navigation/native';
 import axios from 'axios';
-import Wallet from './Stock';
-import Account from './Account';
-import AddMoney from './AddMoney';
-import Signin from './Signin';
 import { AppContext } from '../Global/APIContext';
 const HomePage = () => {
 
@@ -66,8 +62,11 @@ const HomePage = () => {
   // Updating the wallet amount of the reciever
   const [recieveramount,setrecieveramount] = useState(0);
 
-  const { email_sender } = useContext(AppContext);
+  // Storing the accountnumber
+  const [accnumber,setaccnumber] = useState([]);
 
+  const { emaill } = useContext(AppContext);
+  console.log("Email in the homepage is",route.params.email);
 
   const fetchdetail = async () => {
     try {
@@ -127,6 +126,8 @@ const HomePage = () => {
     } catch (err) {
       console.log(err);
     }
+
+  
   };
 
   useEffect(() => {
@@ -261,10 +262,39 @@ const HomePage = () => {
 
     setmodalVisibleTransfer(!modalVisibleTransfer);
   };
-
-  const clearhistory = ()=>{
-    console.log("Clear History button is pressed")
+  
+  const clearhistory = async ()=>{
+    var email_delete = email[index].signupemail;
+        try {
+        const response = await axios.delete('http://10.0.2.2:5000/transaction/deleteemail', {
+          params: {email_delete} // Replace with dynamic email if needed
+        });
+      } catch (error) {
+        console.error(error.response.data);
+    }
   }
+
+  const accnumberdetail = async()=>{
+    try{
+      const response = await axios.get('http://10.0.2.2:5000/bank/accountnumber');
+      setaccnumber(response.data);
+      console.log("Account number at teh home page is",response.data);
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log('HomeScreen is focused');
+      accnumberdetail();
+      console.log("Account number on the Home Page is",typeof accnumber[index]);
+      console.log("Index is",index)
+      return () => {
+        console.log('HomeScreen is unfocused');
+      };
+    }, [index])
+  );
 
   return (
     <View style={styles.main}>
@@ -277,13 +307,18 @@ const HomePage = () => {
       <View style={styles.container}>
         <View style={styles.carddesign}>
           <View style={styles.amount}>
-            <Text>Card Holder email: {route.params.user_name}</Text>
+          <Text style={[styles.emailtxt,{marginBottom:20}]}>Card Holder Name: {route.params.user_name}</Text>
+            <Text style={[styles.emailtxt,{marginBottom:20}]}>Card Holder email: {route.params.email}</Text>
+      {accnumber[index] && (
+        <Text style={[styles.emailtxt,{marginBottom:20}]}>Account Number: {accnumber[index].accountnumber}</Text>
+      )}
+            <Text style={[styles.emailtxt,{marginBottom:10}]}>Card Number:{route.params.cardnumber.cardnumber}</Text>
+            <Text style={styles.emailtxt}>Card Type: Maestro</Text>
           </View>
         </View>
         <View>
           <View style={styles.cardnumber}>
-            <Text style={{ color: 'white' }}>{route.params.cardnumber.cardnumber}</Text>
-            <Text style={{ marginLeft: 200, color: 'white', fontSize: 15 }}>Maestro</Text>
+            {/* Maestro */}
           </View>
         </View>
       </View>
@@ -497,23 +532,29 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     margin: 5,
   },
+
   carddesign: {
     flex: 0.65,
     backgroundColor: '#7b8afe',
     height: 200,
     width: 400,
     borderRadius: 20,
-    alignSelf: "center",
-    margin: 10,
-    flexDirection: 'row', // Makes the content inside horizontal
-    justifyContent: 'space-around', // Spacing out the items evenly
-    alignItems: 'center' // Center the items vertically
+    flexDirection: 'column', // Stacks items vertically
+    justifyContent: 'flex-start', // Start items from the top
+    alignItems: 'flex-start', // Align items to the start (left)
+    padding: 10, // Optional: Adds padding inside the card
   },
-  amount: {
-    margin: 10,
-    // backgroundColor: 'red',
-    padding: 10, // Optional: add padding for better spacing
-    borderRadius: 10, // Optional: add border radius for rounded corners
+  // amount: {
+  //   margin: 5,
+  //   // backgroundColor: 'red',
+  //   padding: 10, // Optional: add padding for better spacing
+  //   borderRadius: 20, // Optional: add border radius for rounded corners
+  //   backgroundColor:'red',
+  // },
+  emailtxt:{
+    fontSize:16,
+    fontWeight:"bold",
+    color:'white'
   },
   cardnumber: {
     margin: 10,

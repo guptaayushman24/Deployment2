@@ -18,6 +18,7 @@ router.post('/tranactionpost',async(req,res)=>{
 router.get('/transaction/email',async(req,res)=>{
     const {email} = req.query;
     console.log("Server side",req.query);
+    
     try{
         const transaction = await transactionhistoryschema.find({SenderEmail:email});
         res.status(200).json(transaction);
@@ -28,11 +29,11 @@ router.get('/transaction/email',async(req,res)=>{
 })
 
 router.delete('/deleteemail',async(req,res)=>{
-    const {email} = req.query;
+    const {email_delete} = req.query;
     console.log("Email in the server side",req.query);
-    console.log("Request query is",email);
+    console.log("Server side email is in delete API",email_delete);
     try{
-        const deletetransaction = await transactionhistoryschema.deleteMany({SenderEmail:email});
+        const deletetransaction = await transactionhistoryschema.deleteMany({SenderEmail:email_delete});
         console.log(deletetransaction);
         res.status(200).json(deletetransaction);
     }
