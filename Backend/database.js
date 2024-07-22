@@ -1,7 +1,7 @@
 // Here we are creating the new database
 const mongoose = require('mongoose');
 // Defining the mongo connect URL
-const connectionURL = 'mongodb://localhost:27017/waterreminder'
+const connectionURL = 'mongodb+srv://guptaayushman24:neOb6dYAi0URSyPh@clusterwallet.xl5rp8w.mongodb.net/?retryWrites=true&w=majority&appName=Clusterwallet'
 // Now we will establish the connection
 mongoose.connect(connectionURL,{
     useNewUrlParser:true,
