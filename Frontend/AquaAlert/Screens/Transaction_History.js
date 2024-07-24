@@ -12,7 +12,7 @@ const TransactionHistory = () => {
     const fetchTransactions = async () => {
     console.log("Email is",email);
     try {
-      const response = await axios.get('http://10.0.2.2:5000/transaction/transaction/email', {
+      const response = await axios.get('https://deployment-76yk.onrender.com/transaction/transaction/email', {
       
         params: {email}
       });

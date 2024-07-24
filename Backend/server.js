@@ -1,6 +1,8 @@
 // Creating the server for the app
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
 const database = require('./database')
 const bodyParser = require('body-parser');
 // Body Parser will format the data so that it will store in the mongodb

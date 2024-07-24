@@ -156,7 +156,7 @@ const BankDetail = ({navigation}) => {
 
         if (temp1 == 1 && temp2 == 1 && temp3==1 &&  temp4 == 1) {
             try {
-                const response = axios.post('http://10.0.2.2:5000/bank/bankdetail', {
+                const response = axios.post('https://deployment-76yk.onrender.com/bank/bankdetail', {
                     bankname,
                     accountnumber,
                     signupemail,

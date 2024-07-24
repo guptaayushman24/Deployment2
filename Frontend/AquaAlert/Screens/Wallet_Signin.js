@@ -17,7 +17,7 @@ const Walletsign = ({navigation}) => {
 
     const fetchdata = async () => {
         try {
-                const responeseemail = await axios.get('http://10.0.2.2:5000/bank/bankdetailemailget');
+                const responeseemail = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailemailget');
                 setstoreemail(responeseemail.data);
                 console.log(responeseemail.data); // logging fetched data instead of state
             } catch (err) {
@@ -25,7 +25,7 @@ const Walletsign = ({navigation}) => {
             }
 
             try {
-                const responseamount = await axios.get('http://10.0.2.2:5000/bank/bankdetailgetamount');
+                const responseamount = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailgetamount');
                 setstoreamount(responseamount.data);
                 console.log(responseamount.data); // logging fetched data instead of state
             } catch (err) {
@@ -53,7 +53,7 @@ const Walletsign = ({navigation}) => {
                 setupdateamount(newamount);
                 console.log("New amount just above try",updateamount);
                 try{
-                    const response = await axios.post('http://10.0.2.2:5000/wallet/walletpost',{
+                    const response = await axios.post('https://deployment-76yk.onrender.com/wallet/walletpost',{
                         email,
                         amountadded:amountlength
                     })
@@ -64,7 +64,7 @@ const Walletsign = ({navigation}) => {
                 }
                  // Updating the bank balance after adding the amount in wallet
                 try{
-                    await axios.put('http://10.0.2.2:5000/bank/bankdetailwalletupdate',{
+                    await axios.put('https://deployment-76yk.onrender.com/bank/bankdetailwalletupdate',{
                         signupemail:email,
                         amountlength:newamount
                     })

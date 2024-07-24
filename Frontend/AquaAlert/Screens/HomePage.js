@@ -70,12 +70,12 @@ const HomePage = () => {
 
   const fetchdetail = async () => {
     try {
-      const emailResponse = await axios.get('http://10.0.2.2:5000/bank/bankdetailemailget');
+      const emailResponse = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailemailget');
       setstoreemail(emailResponse.data);
       setemail(emailResponse.data);
       console.log("Email fetched in the homepage", emailResponse.data);
 
-      const cardNumberResponse = await axios.get('http://10.0.2.2:5000/bank/bankdetailcardnumberget');
+      const cardNumberResponse = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailcardnumberget');
       setcardnumber(cardNumberResponse.data);
       for (let i = 0; i < cardNumberResponse.data.length; i++) {
         if (cardNumberResponse.data[i].cardnumber.toString() === route.params.cardnumber.cardnumber.toString()) {
@@ -84,11 +84,11 @@ const HomePage = () => {
         }
       }
 
-      const amountResponse = await axios.get('http://10.0.2.2:5000/bank/bankdetailgetamount');
+      const amountResponse = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailgetamount');
       setamount(amountResponse.data);
       console.log(amountResponse.data);
 
-      const walletAmountResponse = await axios.get('http://10.0.2.2:5000/wallet/walletamountget');
+      const walletAmountResponse = await axios.get('https://deployment-76yk.onrender.com/wallet/walletamountget');
       setwalletamountstore(walletAmountResponse.data);
       console.log(walletAmountResponse.data);
 
@@ -103,14 +103,14 @@ const HomePage = () => {
         console.log("The new amount is ", newWalletAmount);
         console.log("The new email is", emailResponse.data[index].signupemail);
 
-        await axios.put('http://10.0.2.2:5000/wallet/walletupdate', {
+        await axios.put('https://deployment-76yk.onrender.com/wallet/walletupdate', {
           email: emailResponse.data[index].signupemail,
           amountadded: newWalletAmount
         });
 
         const newBankAmount = amountResponse.data[index].amountlength - parseInt(amountwallet);
         setnewbankamount(newBankAmount);
-        await axios.put('http://10.0.2.2:5000/bank/bankdetailupdatemail', {
+        await axios.put('https://deployment-76yk.onrender.com/bank/bankdetailupdatemail', {
           signupemail: emailResponse.data[index].signupemail,
           amountlength: newBankAmount
         });
@@ -147,7 +147,7 @@ const HomePage = () => {
 
   const fetchWalletAddresses = async () => {
     try {
-      const response = await axios.get('http://10.0.2.2:5000/wallet/walletemailget');
+      const response = await axios.get('https://deployment-76yk.onrender.com/wallet/walletemailget');
       setwalletaddress(response.data);
     } catch (err) {
       console.log(err);
@@ -156,7 +156,7 @@ const HomePage = () => {
 
   const fetchCardNumbers = async () => {
     try {
-      const response = await axios.get('http://10.0.2.2:5000/bank/bankdetailcardnumberget');
+      const response = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailcardnumberget');
       setcardnumber(response.data);
     } catch (err) {
       console.log(err);
@@ -165,7 +165,7 @@ const HomePage = () => {
 
   const fetchWalletAmounts = async () => {
     try {
-      const response = await axios.get('http://10.0.2.2:5000/wallet/walletamountget');
+      const response = await axios.get('https://deployment-76yk.onrender.com/wallet/walletamountget');
       setwalletamountstore(response.data);
     } catch (err) {
       console.log(err);
@@ -174,7 +174,7 @@ const HomePage = () => {
 
   const fetchWalletEmails = async () => {
     try {
-      const response = await axios.get('http://10.0.2.2:5000/wallet/walletemailget');
+      const response = await axios.get('https://deployment-76yk.onrender.com/wallet/walletemailget');
       setwalletemail(response.data);
     } catch (err) {
       console.log(err);
@@ -212,7 +212,7 @@ const HomePage = () => {
 
     if (newsenderamount >= 0) {
       try {
-        await axios.put('http://10.0.2.2:5000/wallet/walletupdatesender', {
+        await axios.put('https://deployment-76yk.onrender.com/wallet/walletupdatesender', {
           email: walletemail[senderIndex]?.email,
           amountadded: newsenderamount
         });
@@ -222,7 +222,7 @@ const HomePage = () => {
       }
 
       try {
-        await axios.put('http://10.0.2.2:5000/wallet/walletupdatereciever', {
+        await axios.put('https://deployment-76yk.onrender.com/wallet/walletupdatereciever', {
           email: walletemail[recieverIndex]?.email,
           amountadded: newrecieveramount
         });
@@ -240,7 +240,7 @@ const HomePage = () => {
   // Transaction
   const transaction = async()=>{
     try{
-      await axios.post('http://10.0.2.2:5000/transaction/tranactionpost',{
+      await axios.post('https://deployment-76yk.onrender.com/transaction/tranactionpost',{
         SenderEmail:walletemail[senderindex].email,
         RecieverEmail:senderemailinput,
         AmountRecieved:transferamount
@@ -266,7 +266,7 @@ const HomePage = () => {
   const clearhistory = async ()=>{
     var email_delete = email[index].signupemail;
         try {
-        const response = await axios.delete('http://10.0.2.2:5000/transaction/deleteemail', {
+        const response = await axios.delete('https://deployment-76yk.onrender.com/transaction/deleteemail', {
           params: {email_delete} // Replace with dynamic email if needed
         });
       } catch (error) {
@@ -276,7 +276,7 @@ const HomePage = () => {
 
   const accnumberdetail = async()=>{
     try{
-      const response = await axios.get('http://10.0.2.2:5000/bank/accountnumber');
+      const response = await axios.get('https://deployment-76yk.onrender.com/bank/accountnumber');
       setaccnumber(response.data);
       console.log("Account number at teh home page is",response.data);
     }

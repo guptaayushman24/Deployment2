@@ -78,7 +78,7 @@ const Signup = ({navigation}) => {
     useEffect(() => {
         const Detail = async () => {
             try {
-                const response = await axios.get('http://10.0.2.2:5000/signup/usersignupdetail');
+                const response = await axios.get('https://deployment-76yk.onrender.com/signup/usersignupdetail');
                 setstoredata(response.data);
                 console.log(storedata);
             }
@@ -247,7 +247,7 @@ const Signup = ({navigation}) => {
 
         if (isMatch == false  && temp1 == 1 && temp2 == 1 && temp3 == 1 && temp4 == 1 && temp5 == 1 && temp6 != 1 && temp7 == 1) {
             try {
-                const response = await axios.post('http://10.0.2.2:5000/signup/usersignupapi', {
+                const response = await axios.post('https://deployment-76yk.onrender.com/signup/usersignupapi', {
                     username,
                     email,
                     password,

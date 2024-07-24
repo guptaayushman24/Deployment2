@@ -15,13 +15,13 @@ const Wallet = () => {
   const fetchDetails = async () => {
     try {
 
-      const emailResponse = await axios.get('http://10.0.2.2:5000/bank/bankdetailemailget');
-      const bankNameResponse = await axios.get('http://10.0.2.2:5000/bank/bankname');
+      const emailResponse = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailemailget');
+      const bankNameResponse = await axios.get('https://deployment-76yk.onrender.com/bank/bankname');
 
-      const accNumberResponse = await axios.get('http://10.0.2.2:5000/bank/bankdetailget');
-      const bankAmountResponse = await axios.get('http://10.0.2.2:5000/bank/bankdetailgetamount');
+      const accNumberResponse = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailget');
+      const bankAmountResponse = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailgetamount');
 
-      const walletAmountResponse = await axios.get('http://10.0.2.2:5000/wallet/walletamountget');
+      const walletAmountResponse = await axios.get('https://deployment-76yk.onrender.com/wallet/walletamountget');
 
       setwalletamount(walletAmountResponse.data);
       setuseremail(emailResponse.data);

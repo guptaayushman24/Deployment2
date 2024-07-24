@@ -68,7 +68,7 @@ const Signin = () => {
     useEffect(() => {
         const Detail = async () => {
             try {
-                const response = await axios.get('http://10.0.2.2:5000/signup/usersignupdetail');
+                const response = await axios.get('https://deployment-76yk.onrender.com/signup/usersignupdetail');
                 setstoredata(response.data);
                 // To log passwords of each user
                 // Store all the password in one list same do for the email and then try to authenticate
@@ -108,7 +108,7 @@ const Signin = () => {
 
             // Fetch the bankdetails (cardnumber only)
             try{
-                const response = await axios.get('http://10.0.2.2:5000/bank/bankdetailcardnumberget');
+                const response = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailcardnumberget');
                 setcardnumber(response.data);
             }
             catch(err){
@@ -118,7 +118,7 @@ const Signin = () => {
             // Calling the bank amount and wallet amount API
 
            try{
-            const responseamount = await axios.get('http://10.0.2.2:5000/bank/bankdetailgetamount');
+            const responseamount = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailgetamount');
              setbankamount(responseamount.data);
             //  console.log("Bank Balance on the index is",bankamount[0].amountlength);
             // console.log(bankamount[1].amountlength);

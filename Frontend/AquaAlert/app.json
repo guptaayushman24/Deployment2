@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "AquaAlert",
-    "slug": "AquaAlert",
+    "slug": "e-wallet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2424ad7a-3c66-47aa-9b20-ed306b9f6e8d"
+      }
+    },
+    "owner": "guptaayushman24"
   }
 }

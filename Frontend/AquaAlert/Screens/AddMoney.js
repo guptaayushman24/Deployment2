@@ -19,14 +19,14 @@ const AddMoney = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response1 = await axios.get('http://10.0.2.2:5000/bank/bankdetailget');
+        const response1 = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailget');
         setfetchbankdetail(response1.data);
       } catch (err) {
         console.log(err);
       }
 
       try {
-        const response2 = await axios.get('http://10.0.2.2:5000/bank/bankdetailgetamount');
+        const response2 = await axios.get('https://deployment-76yk.onrender.com/bank/bankdetailgetamount');
         setfetchamount(response2.data);
       } catch (err) {
         console.log(err);
@@ -96,7 +96,7 @@ const AddMoney = () => {
 
     try {
       if (match && new_index !== -1) {
-        await axios.put('http://10.0.2.2:5000/bank/bankdetailupdate', {
+        await axios.put('https://deployment-76yk.onrender.com/bank/bankdetailupdate', {
           accountnumber,
           amountlength: new_amount
         });
