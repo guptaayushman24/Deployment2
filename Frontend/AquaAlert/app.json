@@ -33,6 +33,12 @@
         "projectId": "e7236ce1-e1c5-4c88-942a-dad28b67768f"
       }
     },
-    "owner": "guptaayushman24"
+    "owner": "guptaayushman24",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e7236ce1-e1c5-4c88-942a-dad28b67768f"
+    }
   }
 }

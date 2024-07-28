@@ -102,7 +102,7 @@ const HomeTabs = () => {
           tabBarIcon: ({ focused }) => (
             <AnimatedIcon
               // resizeMode='cover'
-              source={require('../Image_Used/account_information.png')}
+              source={require('../Image_Used/account_information.jpg')}
               focused={focused}
             //
             style={[

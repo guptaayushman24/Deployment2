@@ -293,7 +293,7 @@ const Signup = ({navigation}) => {
             <View style={styles.nameinput}>
 
                 <ImageBackground
-                    source={require('../Image_Used/user_logo.png')} style={styles.userimg} />
+                    source={require('../Image_Used/user_logo.jpg')} style={styles.userimg} />
                 <TextInput style={styles.txtinput}
                     placeholder={placeholdertext}
                     placeholderTextColor={'#444446'}
