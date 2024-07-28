@@ -1,6 +1,6 @@
 ## Steps for using the app
 
-Step1:- Download the Expo Go app from the app store
+Step1:- Download the Expo Go app from the app store\n
 Step2:- Open the Expo Go app and scan the QR code which is available on the link which is given below
 
 Link for the QR code:- 
